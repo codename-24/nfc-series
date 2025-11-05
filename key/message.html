@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Our Memory 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Nunito:wght@300;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --accent: #ff6b81;
+  --accent2: #ffb86b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffd1dc, #ffe7d6);
+  font-family: 'Nunito', sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  font-family: 'Parisienne', cursive;
+  color: var(--accent);
+  font-size: 34px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  max-width: 800px; /* Match the image width */
+  width: 100%;
+  color: #4b3b4b;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.card p {
+  text-indent: 1.5em;  /* Indentation of the first line */
+  margin-bottom: 0.5em; /* Small space between paragraphs */
+  text-align: justify;
+}
+
+button {
+  margin-top: 24px;
+  width: 50%;  /* Set width to 50% */
+  padding: 12px 16px;  /* Adjust padding for normal button size */
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 6px 16px rgba(255, 107, 129, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  display: block;  /* Ensures the button takes up block space */
+  margin-left: auto;  /* Center button horizontally */
+  margin-right: auto;  /* Center button horizontally */
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.image-wrapper {
+  margin-top: 32px;
+  display: none;
+  justify-content: center;
+  width: 100%;
+}
+
+.image-wrapper img {
+  width: 100%;
+  max-width: 800px; /* Set the max-width of the image */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+@media (max-width: 680px) {
+  h1 {
+    font-size: 28px;
+  }
+  .card {
+    max-width: 90vw;
+    font-size: 16px;
+    padding: 24px 24px 18px 24px;
+  }
+  button {
+    font-size: 16px;
+  }
+  .image-wrapper img {
+    max-width: 90vw; /* Ensure image is responsive */
+  }
+}
+</style>
+</head>
+<body>
+  <main>
+    <h1>Our Memory 💖</h1>
+    <section class="card" id="message-card">
+      <!-- The content will be injected here dynamically -->
+    </section>
+
+    <button id="show-photo-btn">Click here for the picture 📸</button>
+
+    <div class="image-wrapper" id="photo-wrapper">
+      <img src="photo.jpg" alt="Our special memory" id="memory-photo" />
+    </div>
+  </main>
+
+<script>
+// Define your message content here as a single block
+const message = `Not too soon, wait till the end of series, but congrats on finding about NFC`;
+
+// Insert the message into the page as one single block
+const messageCard = document.getElementById('message-card');
+
+// Create a paragraph element to wrap the entire message
+const para = document.createElement('p');
+para.textContent = message;  // Add the entire message as a single paragraph
+messageCard.appendChild(para);
+
+</script>
+</body>
+</html>
