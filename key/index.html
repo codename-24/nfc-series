@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NFC Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Nunito:wght@300;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#ff6b81; 
+  --accent2:#ffb86b;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffd1dc,#ffe7d6);
+  font-family:'Nunito',sans-serif;
+  padding:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.92);
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  padding:32px 24px;
+  width:100%;
+  max-width:400px;
+  text-align:center;
+}
+
+h1{
+  font-family:'Parisienne',cursive;
+  color:var(--accent);
+  font-size:34px;
+  margin-bottom:24px;
+}
+
+label{
+  display:block;
+  font-size:18px;
+  margin-bottom:10px;
+  color:#444;
+  text-align:left;
+}
+
+input{
+  width:100%;
+  padding:12px 14px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:16px;
+  outline:none;
+  max-width:100%;
+}
+
+button{
+  margin-top:18px;
+  width:100%;
+  padding:12px 16px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:white;
+  font-weight:700;
+  font-size:16px;
+  box-shadow:0 6px 16px rgba(255,107,129,0.2);
+  cursor:pointer;
+  transition:transform .15s ease;
+}
+button:active{transform:scale(0.98);}
+
+#error{
+  color:#d94b56;
+  margin-top:12px;
+  font-weight:600;
+  opacity:0;
+  transition:opacity .25s ease;
+  min-height:20px;
+}
+#error.show{opacity:1;}
+
+@media (max-width:480px){
+  h1{font-size:28px;}
+  label{font-size:16px;}
+  input,button{font-size:15px;}
+  .card{padding:24px 18px;}
+}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Quick Verification 👮‍♂️</h1>
+    <label for="answer">What is our happy place?</label>
+    <input id="answer" type="text" placeholder="Type here..." autocomplete="off">
+    <button id="btn">Continue</button>
+    <div id="error">Invalid! Who TF are you?</div>
+  </div>
+
+  <script>
+    const input = document.getElementById('answer');
+    const error = document.getElementById('error');
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', () => {
+      if (input.value.trim().toLowerCase() === 'pooja') {
+        window.location.href = './message.html';
+      } else {
+        error.classList.add('show');
+      }
+    });
+
+    input.addEventListener('input', () => {
+      error.classList.remove('show');
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        btn.click();
+      }
+    });
+
+  </script>
+</body>
+</html>
